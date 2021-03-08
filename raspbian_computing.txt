@@ -1,0 +1,52 @@
+#Begin Python Installation
+#Python configuration
+#Open a terminal and type the #following commands
+sudo apt update && sudo apt upgrade
+sudo apt install build-essential
+#Install subversion and git
+sudo apt install subversion git
+#Check python3 version
+python3 --version
+sudo update-alternatives --list python
+#sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.7 1
+pip install --upgrade pip
+
+#Installing python for math computing
+sudo apt-get install libatlas-base-dev gfortran python-pybind11
+sudo pip install setuptools numpy scipy matplotlib mpmath sympy  cvxpy
+sudo pip install cvxopt
+#if cvxopt fails, then
+sudo pip install -Iv cvxopt==1.1.8
+#End Python Installation
+
+#Begin  latex installation
+sudo apt install texlive-full texmaker okular
+#End latex installation
+
+#Begin Latex and Python Testing
+#Download Test Directory for LaTeX and Python
+svn co https://github.com/gadepall/school/trunk/training
+
+#Testing python installation
+#Open geany and execute the following file for numpy
+training/math/codes/tri_sss.py
+#by pressing F5
+#and the following file for scipy
+training/chemistry/codes/chembal.py
+
+#Testing Latex Installation
+#For latex document, open 
+training/chemistry/gvv_eq_balance.tex
+#and press 
+F2, F4, F8 and F7
+#For latex slides, open 
+training/presentation/example.tex
+#and press 
+F2, F4, F8 and F7
+#For latex figures, open 
+training/math/figs/tri_sss_alone.tex
+#and execute
+#For including figures in a latex document, open
+training/math/gvv_math_eg.tex
+#and execute
+#End Latex and Python Testing

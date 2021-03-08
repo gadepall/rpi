@@ -1,0 +1,73 @@
+#The following instructions are for  installing a headless ubuntu aarch64 using
+#and existing raspbian 
+
+#Download ubuntu 64 bit from the following link
+https://ubuntu.com/download/raspberry-pi
+
+#Go to the directory where the image is downloaded and extract. You should now have a .img file
+tar -xf ubuntu-20.04.raspi.img.xz
+
+#Assuming that you have a usb sdcard reader, find the mount location of your card reader
+sudo fdisk -l
+#If the location of your usb sdcard is /dev/sdX,
+sudo dd bs=4M if=xxxraspbianxxx.img of=/dev/sdX conv=fsync
+
+#Create a temporary mountpoint
+cd ˜
+mkdir temp
+
+#Remove the usb sdcard and plug in again
+sudo fdisk -l
+
+#You should see two partitions
+#/dev/sda1
+#/dev/sda2
+
+#Mount the first partition
+cd ˜
+sudo mount /dev/sda1 temp
+sudo nano temp/ssh
+abcd
+#ctrl+X
+sudo nano temp/ssh
+#Delete abcd
+#ctrl+X
+#This will create the file called ssh in the first partition
+
+#Mount the second partition
+cd ˜
+sudo mount /dev/sda2 temp
+nano /etc/netplan/50-cloud-init.yaml
+#Copy/paste the following as it is
+#The indenting is important
+#replace the ssid and password with your ssid and password inside
+#the quotes
+
+
+#GNU nano 4.8                      /etc/netplan/50-cloud-init.yaml
+# This file is generated from information provided by the datasource.  Changes
+# to it will not persist across an instance reboot.  To disable cloud-init's
+# network configuration capabilities, write a file
+# /etc/cloud/cloud.cfg.d/99-disable-network-config.cfg with the following:
+# network: {config: disabled}
+network:
+    ethernets:
+        eth0:
+            dhcp4: true
+            optional: true
+    version: 2
+
+    wifis:
+        wlan0:
+            optional: true
+            access-points:
+                "ssid":
+                    password: "password"
+            dhcp4: true
+
+#ctrl+X
+#Now remove the sdcard and plug in to the raspberry pi
+#the default username is ubuntu and the default password is ubuntu
+#you will be asked to change the password
+sudo reboot
+sudo apt update && apt upgrade

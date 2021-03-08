@@ -1,0 +1,37 @@
+#Refer to the following link for uart
+https://www.circuits.dk/setup-raspberry-pi-3-gpio-uart/
+
+#Update and upgrade
+sudo su
+apt update && apt upgrade
+
+#Enable all serial ports
+nano /boot/config.txt
+enable_uart=1
+reboot
+ls -l /dev
+
+#You should now see serial0 and serial1 displayed
+lrwxrwxrwx 1 root root           5 Mar  7 04:28 serial0 -> ttyS0
+lrwxrwxrwx 1 root root           7 Mar  7 04:28 serial1 -> ttyAMA0
+
+#ttys0 denotes gpio 14 (Tx) and gpio 15 (rx) on the rpi
+
+#Disable console (if required)
+systemctl stop serial-getty@ttyS0.service
+systemctl disable serial-getty@ttyS0.service
+nano /boot/cmdline.txt
+#and remove the line
+console=serial0,115200 console=tty1 root=PARTUUID=a4064eb$
+
+reboot
+
+#Again modify
+nano /boot/cmdline.txt
+console=tty1 console=serial0,115200 root=/dev/mmcblk0p2 rootfstype=ext4 elevator=deadline fsck.repair=yes rootwait
+
+reboot
+dmesg | grep tty
+
+
+
