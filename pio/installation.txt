@@ -1,0 +1,29 @@
+-------------Download vscode .deb ARM32 bit version for Installation On Rpi3-----
+
+https://code.visualstudio.com/download (the middle link for arm)
+
+
+--------------------Installation:---------------------------------
+
+dpkg -i  code_XXXXXXXXXXXXXXXXXXXXXXXXXX.deb (Copy name of Dowloaded file)
+
+-------------Platformio--------------------------------------------
+#Download sample directory for esp32 and arduino
+svn co https://github.com/gadepall/termux/trunk/pio/Projects
+
+#in VS code  Install PlatformIO
+#go to Project by clicking on PIO Home 
+#create a Project and  select the Board
+(It will automatically generate PlatformIO.ini and required files for your Design)
+
+#For ESP32,
+Open main.cpp from Projects/hi/src
+
+--------------execution steps-------------------------------------
+
+click on tick mark to complie your code (at the left side Bottom of VScode)
+click on upload to programm your Device (at left side Bottom of VScode)
+
+------------------------------------------------------------------
+#For Arduino
+Open main.cpp from Projects/hello/src
