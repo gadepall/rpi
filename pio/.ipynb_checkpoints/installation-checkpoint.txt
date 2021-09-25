@@ -7,9 +7,15 @@ https://code.visualstudio.com/download (the middle link for arm)
 
 dpkg -i  code_XXXXXXXXXXXXXXXXXXXXXXXXXX.deb (Copy name of Dowloaded file)
 
+----------------------Command Line-----------------
+sudo pip3 install platformio
+sudo apt install subversion
+
+
 -------------Platformio--------------------------------------------
 #Download sample directory for esp32 and arduino
 svn co https://github.com/gadepall/termux/trunk/pio/Projects
+pio lib --global install "stempedia/DabbleESP32"
 
 #in VS code  Install PlatformIO
 #go to Project by clicking on PIO Home 
