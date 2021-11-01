@@ -1,0 +1,1 @@
+https://gist.githubusercontent.com/larsch/4ae5499023a3c5e22552/raw/a5005f424d1f3dd0f74d0038523042e03525b46b/write-to-sdcard.sh

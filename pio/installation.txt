@@ -1,3 +1,5 @@
+----Using vscode GUI-------------
+
 -------------Download vscode .deb ARM32 bit version for Installation On Rpi3-----
 
 https://code.visualstudio.com/download (the middle link for arm)
@@ -6,16 +8,7 @@ https://code.visualstudio.com/download (the middle link for arm)
 --------------------Installation:---------------------------------
 
 dpkg -i  code_XXXXXXXXXXXXXXXXXXXXXXXXXX.deb (Copy name of Dowloaded file)
-
-----------------------Command Line-----------------
-sudo pip3 install platformio
-sudo apt install subversion
-
-
--------------Platformio--------------------------------------------
-#Download sample directory for esp32 and arduino
 svn co https://github.com/gadepall/termux/trunk/pio/Projects
-pio lib --global install "stempedia/DabbleESP32"
 
 #in VS code  Install PlatformIO
 #go to Project by clicking on PIO Home 
@@ -33,3 +26,13 @@ click on upload to programm your Device (at left side Bottom of VScode)
 ------------------------------------------------------------------
 #For Arduino
 Open main.cpp from Projects/hello/src
+
+-----------Without GUI-----------Command Line-----------------
+sudo pip3 install platformio
+sudo apt install subversion
+#Download sample directory for esp32 and arduino
+svn co https://github.com/gadepall/termux/trunk/pio/Projects
+pio lib --global install "stempedia/DabbleESP32"
+cd Projects/hi
+pio run
+pio run -t nobuild -t upload
